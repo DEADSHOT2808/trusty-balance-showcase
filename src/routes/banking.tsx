@@ -108,6 +108,7 @@ function Banking() {
             <AccountCard name="Chequing" number="06742-83-81283" balance="$2.19" />
             <div className="mt-4" />
             <AccountCard name="Savings" number={savingsNum} balance="$1,067.00" />
+            <SavingsTransactions />
           </div>
 
           <Section title="CREDIT CARDS" text="Learn more about CIBC credit cards and rewards on everyday purchases." />
