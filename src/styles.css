@@ -65,6 +65,9 @@
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
+  --cibc-red: oklch(0.52 0.19 18);
+  --cibc-red-hover: oklch(0.46 0.19 18);
+  --cibc-pink: oklch(0.93 0.04 18);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
