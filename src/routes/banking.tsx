@@ -189,3 +189,38 @@ function RowTile({ icon, label }: { icon: React.ReactNode; label: string }) {
     </div>
   );
 }
+
+function SavingsTransactions() {
+  const fmtDate = (daysAgo: number) => {
+    const d = new Date();
+    d.setDate(d.getDate() - daysAgo);
+    return d.toLocaleDateString("en-CA", { month: "short", day: "numeric", year: "numeric" });
+  };
+  const txns = [
+    { date: fmtDate(10), desc: "Transfer from Chequing 06742-83-81283", amount: 967, type: "in" as const },
+    { date: fmtDate(4), desc: "Transfer from Chequing 06742-83-81283", amount: 300, type: "in" as const },
+    { date: fmtDate(2), desc: "Transfer to Chequing 06742-83-81283", amount: 200, type: "out" as const },
+  ];
+  return (
+    <div className="mt-4 rounded-lg border bg-white p-6">
+      <div className="flex items-center justify-between">
+        <h3 className="text-lg font-medium text-gray-900">Savings — Recent transactions</h3>
+        <a href="#" className="text-sm" style={{ color: "var(--cibc-red)" }}>View all ›</a>
+      </div>
+      <div className="mt-4 divide-y">
+        <div className="grid grid-cols-[110px_1fr_120px] gap-4 pb-2 text-xs font-semibold tracking-widest text-gray-600">
+          <span>DATE</span><span>DESCRIPTION</span><span className="text-right">AMOUNT</span>
+        </div>
+        {txns.map((t, i) => (
+          <div key={i} className="grid grid-cols-[110px_1fr_120px] gap-4 py-3 items-center">
+            <span className="text-sm text-gray-700">{t.date}</span>
+            <span className="text-gray-900">{t.desc}</span>
+            <span className={`text-right font-medium ${t.type === "in" ? "text-green-700" : "text-gray-900"}`}>
+              {t.type === "in" ? "+" : "−"}${t.amount.toFixed(2)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
